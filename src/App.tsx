@@ -10,6 +10,7 @@
 
 import React from 'react';
 import Header from './components/Header';
+import PhotoCarousel from './components/PhotoCarousel';
 import SarcfScreening from './components/SarcfScreening';
 import ProteinCalculator from './components/ProteinCalculator';
 import WorkoutTimer from './components/WorkoutTimer';
@@ -42,6 +43,8 @@ export default function App() {
         <section id="overview" className="scroll-mt-24">
           <Header />
         </section>
+
+        <PhotoCarousel />
 
         <section id="feature-entry" className="rounded-3xl border border-amber-100 bg-white p-6 shadow-sm md:p-8" aria-labelledby="feature-entry-title">
           <div className="mb-6">
