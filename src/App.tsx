@@ -20,7 +20,7 @@ import { motion } from 'motion/react';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-amber-50/30 font-sans antialiased" id="top">
+    <div className="min-h-screen overflow-x-hidden bg-amber-50/30 font-sans antialiased" id="top">
       <nav className="sticky top-0 z-50 border-b border-amber-100 bg-white/95 shadow-sm backdrop-blur" aria-label="主要導覽">
         <div className="mx-auto flex max-w-6xl items-center gap-5 px-4 py-3 sm:px-6 lg:px-8">
           <a href="#top" className="min-w-fit font-black text-amber-900">
