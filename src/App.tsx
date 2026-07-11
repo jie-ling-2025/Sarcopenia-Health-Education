@@ -14,21 +14,68 @@ import SarcfScreening from './components/SarcfScreening';
 import ProteinCalculator from './components/ProteinCalculator';
 import WorkoutTimer from './components/WorkoutTimer';
 import InspirationalComic from './components/InspirationalComic';
-import { ShieldCheck, Flame, Sun, Droplets } from 'lucide-react';
+import { ShieldCheck, Flame, Sun, Droplets, Activity, Calculator, Utensils, Dumbbell, BookOpen, ArrowUp } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-amber-50/30 py-10 px-4 sm:px-6 lg:px-8 font-sans antialiased" id="main-app-container">
+    <div className="min-h-screen bg-amber-50/30 font-sans antialiased" id="top">
+      <nav className="sticky top-0 z-50 border-b border-amber-100 bg-white/95 shadow-sm backdrop-blur" aria-label="主要導覽">
+        <div className="mx-auto flex max-w-6xl items-center gap-5 px-4 py-3 sm:px-6 lg:px-8">
+          <a href="#top" className="min-w-fit font-black text-amber-900">
+            銀髮健康守護指南
+          </a>
+          <div className="flex flex-1 items-center gap-1 overflow-x-auto whitespace-nowrap text-sm font-bold text-slate-600">
+            <a className="rounded-full px-3 py-2 hover:bg-amber-50 hover:text-amber-900" href="#overview">認識肌少症</a>
+            <a className="rounded-full px-3 py-2 hover:bg-amber-50 hover:text-amber-900" href="#sarc-f">快速檢測</a>
+            <a className="rounded-full px-3 py-2 hover:bg-amber-50 hover:text-amber-900" href="#protein">蛋白質助手</a>
+            <a className="rounded-full px-3 py-2 hover:bg-amber-50 hover:text-amber-900" href="#exercise">居家運動</a>
+            <a className="rounded-full px-3 py-2 hover:bg-amber-50 hover:text-amber-900" href="#stories">勇氣故事</a>
+            <a className="rounded-full px-3 py-2 hover:bg-amber-50 hover:text-amber-900" href="#health-guide">健康知識</a>
+          </div>
+        </div>
+      </nav>
+
+      <main className="px-4 py-8 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto space-y-8" id="content-container">
         {/* Top Header & Educational intro */}
-        <Header />
+        <section id="overview" className="scroll-mt-24">
+          <Header />
+        </section>
+
+        <section id="feature-entry" className="rounded-3xl border border-amber-100 bg-white p-6 shadow-sm md:p-8" aria-labelledby="feature-entry-title">
+          <div className="mb-6">
+            <p className="mb-2 text-sm font-black tracking-widest text-amber-700">快速開始</p>
+            <h2 id="feature-entry-title" className="text-2xl font-black text-slate-900 md:text-3xl">這個工具可以幫您做什麼？</h2>
+            <p className="mt-2 text-base leading-relaxed text-slate-600">依照需求直接前往檢測、飲食規劃、運動練習或健康知識，原有完整內容都保留在下方。</p>
+          </div>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {[
+              { href: '#sarc-f', title: 'SARC-F 快速檢測', text: '用五個問題初步了解肌少症風險。', icon: Activity, color: 'text-rose-600 bg-rose-50' },
+              { href: '#protein', title: '蛋白質攝取試算', text: '依體重與活動量估算每日目標。', icon: Calculator, color: 'text-amber-700 bg-amber-50' },
+              { href: '#protein', title: '日常配餐累加', text: '挑選常見食材，查看蛋白質進度。', icon: Utensils, color: 'text-emerald-700 bg-emerald-50' },
+              { href: '#exercise', title: '居家阻力運動', text: '跟著動作說明、計時與組數練習。', icon: Dumbbell, color: 'text-blue-700 bg-blue-50' },
+              { href: '#stories', title: '銀髮肌力故事', text: '用圖像故事建立持續鍛鍊的勇氣。', icon: BookOpen, color: 'text-violet-700 bg-violet-50' },
+            ].map(({ href, title, text, icon: Icon, color }) => (
+              <a key={title} href={href} className="group rounded-2xl border border-slate-100 p-4 transition hover:-translate-y-1 hover:border-amber-200 hover:shadow-md">
+                <span className={`mb-4 flex h-11 w-11 items-center justify-center rounded-xl ${color}`}>
+                  <Icon className="h-5 w-5" aria-hidden="true" />
+                </span>
+                <h3 className="font-black leading-snug text-slate-900 group-hover:text-amber-800">{title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">{text}</p>
+                <span className="mt-3 inline-block text-sm font-black text-amber-700">前往使用 →</span>
+              </a>
+            ))}
+          </div>
+        </section>
 
         {/* Section 1a: SARC-F Questionnaire Screen */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
+          id="sarc-f"
+          className="scroll-mt-24"
         >
           <SarcfScreening />
         </motion.div>
@@ -38,6 +85,8 @@ export default function App() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.15 }}
+          id="protein"
+          className="scroll-mt-24"
         >
           <ProteinCalculator />
         </motion.div>
@@ -47,6 +96,8 @@ export default function App() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
+          id="exercise"
+          className="scroll-mt-24"
         >
           <WorkoutTimer />
         </motion.div>
@@ -56,6 +107,8 @@ export default function App() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.25 }}
+          id="stories"
+          className="scroll-mt-24"
         >
           <InspirationalComic />
         </motion.div>
@@ -65,8 +118,8 @@ export default function App() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="bg-gradient-to-b from-blue-50/50 via-white to-white rounded-3xl border-2 border-blue-100/90 p-6 md:p-8 shadow-sm"
-          id="lifestyle-guideline-card"
+          className="scroll-mt-24 bg-gradient-to-b from-blue-50/50 via-white to-white rounded-3xl border-2 border-blue-100/90 p-6 md:p-8 shadow-sm"
+          id="health-guide"
         >
           <div className="flex items-start gap-4 mb-6">
             <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 shadow-xs flex-shrink-0 mt-0.5">
@@ -133,12 +186,20 @@ export default function App() {
           </div>
         </motion.div>
 
+        <div className="flex justify-center py-2">
+          <a href="#top" className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-white px-5 py-3 text-sm font-black text-amber-800 shadow-sm hover:bg-amber-50" aria-label="回到頁面頂端">
+            <ArrowUp className="h-4 w-4" aria-hidden="true" />
+            回到頂端
+          </a>
+        </div>
+
         {/* Beautiful Simple Footer */}
         <footer className="text-center text-xs text-slate-600 font-medium py-6 border-t border-slate-100/50 animate-fade-in" id="app-footer">
           本作品由安南醫院居家與護理之家共同設計與製作，僅供健康衛教與學習參考。 ‧ © {new Date().getFullYear()}
         </footer>
 
       </div>
+      </main>
     </div>
   );
 }
