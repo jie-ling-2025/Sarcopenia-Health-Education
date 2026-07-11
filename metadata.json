@@ -1,0 +1,8 @@
+{
+  "name": "銀髮族肌少症預防指南",
+  "description": "提供銀髮族肌少症自我檢測、客製化蛋白質攝取計算與居家阻力訓練指南。",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
