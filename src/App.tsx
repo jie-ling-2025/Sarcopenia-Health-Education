@@ -39,11 +39,6 @@ export default function App() {
 
       <main className="px-4 py-8 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto space-y-8" id="content-container">
-        {/* Top Header & Educational intro */}
-        <section id="overview" className="scroll-mt-24">
-          <Header />
-        </section>
-
         <PhotoCarousel />
 
         <section id="feature-entry" className="rounded-3xl border border-amber-100 bg-white p-6 shadow-sm md:p-8" aria-labelledby="feature-entry-title">
@@ -70,6 +65,15 @@ export default function App() {
               </a>
             ))}
           </div>
+        </section>
+
+        {/* Original educational article content is preserved as the overview section. */}
+        <section id="overview" className="scroll-mt-24">
+          <div className="mb-4 px-1">
+            <p className="text-sm font-black tracking-widest text-amber-700">完整衛教內容</p>
+            <h2 className="mt-2 text-2xl font-black text-slate-900 md:text-3xl">認識肌少症與預防重點</h2>
+          </div>
+          <Header />
         </section>
 
         {/* Section 1a: SARC-F Questionnaire Screen */}
