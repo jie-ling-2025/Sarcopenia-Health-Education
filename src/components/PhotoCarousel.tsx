@@ -15,12 +15,54 @@ import hexBarDeadliftComic from '../assets/images/hex_bar_deadlift_comic_1783791
 import courageComic from '../assets/images/courage_comic_strip_1783767606541.jpg';
 
 const slides = [
-  { image: chairSquatDemo, eyebrow: '居家阻力運動', title: '椅子坐站起立', description: '從日常坐站開始，逐步鍛鍊大腿與臀部肌力。', href: '#exercise' },
-  { image: wallPushUpDemo, eyebrow: '安全入門動作', title: '靠牆伏地挺身', description: '利用牆面支撐，溫和訓練上肢與胸部肌群。', href: '#exercise' },
-  { image: calfRaiseDemo, eyebrow: '下肢穩定練習', title: '扶椅站姿提踵', description: '在穩固支撐下練習，強化小腿與站立穩定度。', href: '#exercise' },
-  { image: legExtensionDemo, eyebrow: '坐姿肌力訓練', title: '坐姿直膝抬腿', description: '坐著也能鍛鍊大腿前側，適合循序漸進練習。', href: '#exercise' },
-  { image: hexBarDeadliftComic, eyebrow: '銀髮肌力勇氣劇場', title: '跨出第一步的勇氣', description: '從故事看見長者開始肌力訓練的歷程。', href: '#stories' },
-  { image: courageComic, eyebrow: '銀髮肌力勇氣劇場', title: '改變從此刻開始', description: '每一次安全練習，都是累積自主生活能力的一步。', href: '#stories' },
+  {
+    image: hexBarDeadliftComic,
+    eyebrow: '銀髮健康基礎',
+    title: '認識肌少症',
+    description: '了解肌少症的常見警訊、影響與預防三大支柱，建立正確的健康觀念。',
+    href: '#overview',
+    action: '開始認識',
+  },
+  {
+    image: chairSquatDemo,
+    eyebrow: 'SARC-F 自我篩檢',
+    title: '快速檢測',
+    description: '透過五個簡單問題，初步了解肌力、行走、起立、爬樓梯與跌倒情形。',
+    href: '#sarc-f',
+    action: '開始檢測',
+  },
+  {
+    image: courageComic,
+    eyebrow: '飲食與營養規劃',
+    title: '蛋白質助手',
+    description: '依體重與活動狀況試算每日蛋白質目標，再用常見食材安排日常配餐。',
+    href: '#protein',
+    action: '開始試算',
+  },
+  {
+    image: wallPushUpDemo,
+    eyebrow: '安全居家練習',
+    title: '居家運動',
+    description: '跟著四套阻力運動的步驟、計時器與組數紀錄，循序漸進培養肌力。',
+    href: '#exercise',
+    action: '查看運動',
+  },
+  {
+    image: calfRaiseDemo,
+    eyebrow: '銀髮肌力勇氣劇場',
+    title: '勇氣故事',
+    description: '從長者開始訓練的故事，看見持續記錄、逐步改變與自主生活的力量。',
+    href: '#stories',
+    action: '閱讀故事',
+  },
+  {
+    image: legExtensionDemo,
+    eyebrow: '日常生活核心指引',
+    title: '健康知識',
+    description: '整理維生素 D、水分、運動強度與休息安排等日常健康衛教重點。',
+    href: '#health-guide',
+    action: '閱讀指南',
+  },
 ];
 
 export default function PhotoCarousel() {
@@ -68,7 +110,7 @@ export default function PhotoCarousel() {
           <h2 className="text-3xl font-black leading-tight md:text-5xl">{slide.title}</h2>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-slate-100 md:text-lg">{slide.description}</p>
           <a href={slide.href} className="mt-6 inline-flex w-fit rounded-full bg-amber-500 px-6 py-3 font-black text-slate-950 shadow-lg hover:bg-amber-400">
-            查看完整內容
+            {slide.action}
           </a>
         </div>
 
