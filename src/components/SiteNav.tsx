@@ -27,7 +27,7 @@ export default function SiteNav() {
   }, [open]);
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-amber-100 bg-white/95 shadow-sm backdrop-blur" aria-label="主要導覽">
+    <nav className="sticky top-0 z-50 border-b border-amber-100 bg-white/95 shadow-sm" aria-label="主要導覽">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-5 px-4 py-3 sm:px-6 lg:px-8">
         <a href="#top" className="font-black text-amber-900" onClick={() => setOpen(false)}>
           銀髮健康守護指南
