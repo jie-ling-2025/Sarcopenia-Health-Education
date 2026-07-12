@@ -18,10 +18,10 @@ export default function GiftPreview() {
             id="gift-preview-title"
             className="mt-4 text-2xl font-black leading-tight text-slate-900 sm:text-3xl"
           >
-            讀到最後，免費領取7天養肌行動 Notion 模板
+            讀到最後，免費領取「7天養肌打卡」Notion 模板
           </h2>
           <p className="mt-3 text-base leading-relaxed text-slate-700 sm:text-lg">
-            完整閱讀本網站後，分享你的閱讀心得或改善建議，即可免費取得《7天養肌行動計畫》Notion 模板，把飲食、運動與生活習慣真正帶回每一天。
+            完整閱讀本網站後，分享你的閱讀心得或改善建議，即可免費取得《7天養肌打卡｜飲食・活動・生活習慣》Notion 模板。每天勾選做得到的項目，從7天累積紀錄看見自己已經建立的習慣，以及下一步可以調整的地方。
           </p>
           <p className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-bold text-slate-600">
             <span className="inline-flex items-center gap-1">
@@ -30,7 +30,7 @@ export default function GiftPreview() {
             </span>
             <span className="inline-flex items-center gap-1">
               <NotebookPen className="h-4 w-4 text-amber-600" aria-hidden="true" />
-              Notion 可複製模板
+              Notion 可複製打卡模板
             </span>
             <span className="inline-flex items-center gap-1">
               <Heart className="h-4 w-4 text-rose-600" aria-hidden="true" />
