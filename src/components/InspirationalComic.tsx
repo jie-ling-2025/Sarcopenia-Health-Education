@@ -9,7 +9,7 @@ import {
 // @ts-ignore
 import hexBarDeadliftComic from '../assets/images/hex_bar_deadlift_comic_1783791370018.jpg';
 // @ts-ignore
-import defaultCourageComic from '../assets/images/courage_comic_strip_1783767606541.jpg';
+import defaultCourageComic from '../assets/images/story-two-113523.jpg';
 
 export default function InspirationalComic() {
   const title1 = '跨出第一步的勇氣：六角槓硬舉';
