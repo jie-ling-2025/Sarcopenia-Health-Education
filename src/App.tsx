@@ -163,7 +163,7 @@ export default function App() {
 
         {/* Beautiful Simple Footer */}
         <footer className="text-center text-xs text-slate-600 font-medium py-6 border-t border-slate-100/50 animate-fade-in" id="app-footer">
-          本作品由安南醫院居家與護理之家共同設計與製作，僅供健康衛教與學習參考。 ‧ © {new Date().getFullYear()}
+          銀髮族肌少症預防指南 ‧ 專業飲食與阻力訓練簡易指導手冊 ‧ © {new Date().getFullYear()} ‧ 安南醫院居家長照組編製
         </footer>
 
       </div>
