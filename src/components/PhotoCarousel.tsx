@@ -78,10 +78,10 @@ export default function PhotoCarousel() {
         ))}
       </div>
 
-      <button type="button" onClick={() => goTo(current - 1)} className="absolute left-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/40 bg-white/50 text-slate-900 shadow-md backdrop-blur-md hover:bg-white/75 md:left-8 md:h-12 md:w-12" aria-label="上一個主題">
+      <button type="button" onClick={() => goTo(current - 1)} className="absolute left-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center bg-transparent text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)] hover:text-amber-300 md:left-8 md:h-12 md:w-12" aria-label="上一個主題">
         <ChevronLeft aria-hidden="true" />
       </button>
-      <button type="button" onClick={() => goTo(current + 1)} className="absolute right-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/40 bg-white/50 text-slate-900 shadow-md backdrop-blur-md hover:bg-white/75 md:right-8 md:h-12 md:w-12" aria-label="下一個主題">
+      <button type="button" onClick={() => goTo(current + 1)} className="absolute right-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center bg-transparent text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)] hover:text-amber-300 md:right-8 md:h-12 md:w-12" aria-label="下一個主題">
         <ChevronRight aria-hidden="true" />
       </button>
 
