@@ -8,7 +8,6 @@ import {
   HeartPulse,
   NotebookPen,
   Smile,
-  Sun,
   Users,
   Utensils,
 } from 'lucide-react';
