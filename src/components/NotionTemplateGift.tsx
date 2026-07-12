@@ -7,20 +7,19 @@ import {
   Gift,
   HeartPulse,
   NotebookPen,
-  Smile,
-  Users,
+  Sun,
   Utensils,
 } from 'lucide-react';
 import TemplateRequestForm from './TemplateRequestForm';
 
 const templateItems = [
-  { title: '7天養肌目標設定', icon: CalendarCheck2 },
-  { title: '每日三餐蛋白質紀錄', icon: Utensils },
-  { title: '居家運動與日常活動打卡', icon: Dumbbell },
-  { title: '水分、日照與規律生活紀錄', icon: Droplets },
-  { title: '每日身體感受', icon: Smile },
-  { title: '7天成果回顧', icon: BarChart3 },
-  { title: '家屬觀察筆記', icon: Users },
+  { title: '早餐、午餐、晚餐蛋白質食物打卡', icon: Utensils },
+  { title: '每日適當補充水分', icon: Droplets },
+  { title: '活動或居家運動打卡', icon: Dumbbell },
+  { title: '提醒自己避免長時間久坐', icon: CalendarCheck2 },
+  { title: '戶外活動或接觸日光', icon: Sun },
+  { title: '維持規律作息', icon: NotebookPen },
+  { title: '累積天數與7天累積率', icon: BarChart3 },
 ];
 
 export default function NotionTemplateGift() {
@@ -43,13 +42,16 @@ export default function NotionTemplateGift() {
           id="notion-template-gift-title"
           className="mt-2 text-3xl font-black leading-tight text-slate-900 sm:text-4xl"
         >
-          把今天學到的知識，變成接下來7天的行動
+          不用追求完美，先看見這7天做得到的改變
         </h2>
         <p className="mt-4 text-xl font-black text-amber-800">
-          免費領取《7天養肌行動計畫》Notion 模板
+          免費領取《7天養肌打卡｜飲食・活動・生活習慣》Notion 模板
         </p>
         <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
-          這份模板協助你記錄每天的蛋白質飲食、居家運動、水分、日照、規律生活及身體感受。它是一份一般健康教育與生活紀錄工具，不能取代醫療診斷、治療或個別化專業建議。
+          複製模板到自己的 Notion 後，每天只要在第1～7天的欄位中，勾選當天做得到的項目，不必全部完成。模板會整理每個習慣的累積天數與7天累積率，幫助你看見容易維持的行動，以及下週可以縮小或調整的地方。
+        </p>
+        <p className="mx-auto mt-3 max-w-3xl text-sm leading-relaxed text-slate-600">
+          這是一份一般健康教育與個人生活紀錄工具，不能取代醫療診斷、治療或個別化專業建議。
         </p>
       </div>
 
@@ -70,7 +72,7 @@ export default function NotionTemplateGift() {
       <div className="mt-8 rounded-2xl bg-rose-50 p-4 text-base leading-relaxed text-slate-700">
         <p className="flex items-start gap-2">
           <HeartPulse className="mt-0.5 h-5 w-5 shrink-0 text-rose-600" aria-hidden="true" />
-          請分享實際閱讀心得或改善建議；填寫時不要提供病歷號、完整診斷、用藥或其他敏感健康資料。
+          打卡是為了看見累積，不是要求每天完美。請勿在模板或心得中填寫病歷號、完整診斷、用藥或其他敏感健康資料。
         </p>
       </div>
 
