@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 // @ts-ignore
 import overviewHero from '../assets/hero/overview.png';
@@ -25,17 +25,16 @@ const slides = [
 
 export default function PhotoCarousel() {
   const [current, setCurrent] = useState(0);
-  const [playing, setPlaying] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
   const touchStart = useRef<number | null>(null);
 
   const goTo = (index: number) => setCurrent((index + slides.length) % slides.length);
 
   useEffect(() => {
-    if (!playing || isHovered || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (isHovered || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const timer = window.setInterval(() => setCurrent((value) => (value + 1) % slides.length), 5000);
     return () => window.clearInterval(timer);
-  }, [playing, isHovered]);
+  }, [isHovered]);
 
   return (
     <section
@@ -86,16 +85,12 @@ export default function PhotoCarousel() {
       </button>
 
       <div className="absolute inset-x-0 bottom-0 z-20 px-6 pb-5 pt-10">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4">
+        <div className="mx-auto flex max-w-6xl items-center justify-start gap-4">
           <div className="flex flex-wrap gap-2" aria-label="選擇主題">
             {slides.map((slide, index) => (
               <button key={slide.title} type="button" onClick={() => goTo(index)} className={`h-3 rounded-full transition-all ${index === current ? 'w-9 bg-amber-400' : 'w-3 bg-white/55 hover:bg-white/80'}`} aria-label={`顯示第 ${index + 1} 張：${slide.title}`} aria-current={index === current ? 'true' : undefined} />
             ))}
           </div>
-          <button type="button" onClick={() => setPlaying((value) => !value)} className="flex min-w-fit items-center gap-2 rounded-full border border-white/30 bg-slate-950/35 px-4 py-2 text-sm font-bold text-white backdrop-blur-md hover:bg-slate-950/50" aria-label={playing ? '暫停主題自動播放' : '開始主題自動播放'}>
-            {playing ? <Pause className="h-4 w-4" aria-hidden="true" /> : <Play className="h-4 w-4" aria-hidden="true" />}
-            {playing ? '暫停' : '播放'}
-          </button>
         </div>
       </div>
     </section>
