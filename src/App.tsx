@@ -12,6 +12,8 @@ import React from 'react';
 import Header from './components/Header';
 import PhotoCarousel from './components/PhotoCarousel';
 import SiteNav from './components/SiteNav';
+import GiftPreview from './components/GiftPreview';
+import NotionTemplateGift from './components/NotionTemplateGift';
 import SarcfScreening from './components/SarcfScreening';
 import ProteinCalculator from './components/ProteinCalculator';
 import WorkoutTimer from './components/WorkoutTimer';
@@ -27,6 +29,8 @@ export default function App() {
       <main className="px-4 py-8 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto space-y-8" id="content-container">
         <PhotoCarousel />
+
+        <GiftPreview />
 
         {/* Original educational article content is preserved as the overview section. */}
         <section id="overview" className="scroll-mt-24">
@@ -153,6 +157,8 @@ export default function App() {
             💡 本指南及計算器結果僅供健康生活型態規劃參考，不可取代專業醫療診斷。若您患有特殊慢性病 (如嚴重腎臟病、關節炎、心血管疾病)，進行任何高蛋白飲食與運動計畫前，請務必諮詢您的主治醫師或專業物理治療師。
           </div>
         </motion.div>
+
+        <NotionTemplateGift />
 
         <div className="flex justify-center py-2">
           <a href="#top" className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-white px-5 py-3 text-sm font-black text-amber-800 shadow-sm hover:bg-amber-50" aria-label="回到頁面頂端">
