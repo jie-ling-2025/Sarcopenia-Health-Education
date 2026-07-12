@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import {
-  BarChart3,
   CalendarCheck2,
   Droplets,
   Dumbbell,
   Gift,
-  HeartPulse,
   NotebookPen,
   Sun,
   Utensils,
@@ -19,7 +17,6 @@ const templateItems = [
   { title: '提醒自己避免長時間久坐', icon: CalendarCheck2 },
   { title: '戶外活動或接觸日光', icon: Sun },
   { title: '維持規律作息', icon: NotebookPen },
-  { title: '累積天數與7天累積率', icon: BarChart3 },
 ];
 
 export default function NotionTemplateGift() {
@@ -67,13 +64,6 @@ export default function NotionTemplateGift() {
             <p className="font-black leading-relaxed text-slate-800">{title}</p>
           </div>
         ))}
-      </div>
-
-      <div className="mt-8 rounded-2xl bg-rose-50 p-4 text-base leading-relaxed text-slate-700">
-        <p className="flex items-start gap-2">
-          <HeartPulse className="mt-0.5 h-5 w-5 shrink-0 text-rose-600" aria-hidden="true" />
-          打卡是為了看見累積，不是要求每天完美。請勿在模板或心得中填寫病歷號、完整診斷、用藥或其他敏感健康資料。
-        </p>
       </div>
 
       <div className="mt-8 text-center">
