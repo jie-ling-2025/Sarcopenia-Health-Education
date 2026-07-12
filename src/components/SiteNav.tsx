@@ -8,6 +8,7 @@ const links = [
   { href: '#exercise', label: '居家運動' },
   { href: '#stories', label: '勇氣故事' },
   { href: '#health-guide', label: '健康知識' },
+  { href: '#notion-template-gift', label: '領取模板' },
 ];
 
 export default function SiteNav() {
