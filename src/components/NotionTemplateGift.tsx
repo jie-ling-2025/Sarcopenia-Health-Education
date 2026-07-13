@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   CalendarCheck2,
   Droplets,
@@ -8,7 +8,8 @@ import {
   Sun,
   Utensils,
 } from 'lucide-react';
-import TemplateRequestForm from './TemplateRequestForm';
+const googleFormUrl =
+  'https://docs.google.com/forms/d/e/1FAIpQLSeGsDFAE1RQpw84X76QPV3-Bhdbs5GGWMhB1uK-ghUwn8cV5A/viewform?usp=dialog';
 
 const templateItems = [
   { title: '早餐、午餐、晚餐蛋白質食物打卡', icon: Utensils },
@@ -20,8 +21,6 @@ const templateItems = [
 ];
 
 export default function NotionTemplateGift() {
-  const [showForm, setShowForm] = useState(false);
-
   return (
     <section
       id="notion-template-gift"
@@ -67,20 +66,22 @@ export default function NotionTemplateGift() {
       </div>
 
       <div className="mt-8 text-center">
-        <button
-          type="button"
+        <a
+          href={googleFormUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-amber-600 px-7 py-4 text-lg font-black text-white shadow-md transition hover:bg-amber-700"
-          aria-expanded={showForm}
-          aria-controls="template-request-form-container"
-          onClick={() => setShowForm((current) => !current)}
         >
           <NotebookPen className="h-5 w-5" aria-hidden="true" />
-          {showForm ? '收起領取表單' : '填寫心得，免費領取模板'}
-        </button>
-      </div>
-
-      <div id="template-request-form-container">
-        {showForm && <TemplateRequestForm />}
+          前往 Google 表單填寫心得
+          <span className="sr-only">（另開新分頁）</span>
+        </a>
+        <p className="mx-auto mt-4 max-w-2xl text-base font-bold leading-relaxed text-slate-700">
+          送出後將由製作團隊人工審核，確認後寄送至你填寫的 Email，並非即時寄送。
+        </p>
+        <p className="mx-auto mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">
+          請留意收件匣與垃圾郵件匣，並避免重複填寫相同申請。
+        </p>
       </div>
     </section>
   );
