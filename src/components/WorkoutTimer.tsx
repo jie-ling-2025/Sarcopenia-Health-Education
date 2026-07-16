@@ -157,9 +157,57 @@ export default function WorkoutTimer() {
         </button>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8" id="workout-grid">
-        {/* Left column: Exercise picker list with nested interactive controls */}
-        <div className="lg:col-span-8 space-y-3.5" id="exercise-list">
+      {/* Action demo cards come first on every screen so mobile users see all four movements before the instructions. */}
+      <div className="bg-slate-50/40 border border-slate-100 rounded-3xl p-3.5 md:p-5 mb-7 space-y-4" id="visual-demo-guide">
+        <div>
+          <span className="text-base font-bold text-slate-500 uppercase tracking-wider block">四大抗肌少動作示範圖</span>
+          <p className="text-sm md:text-base text-slate-500 mt-1">先看示意圖掌握動作，再到下方展開步驟、計時與紀錄。</p>
+        </div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+          <div className="bg-white border border-slate-100 p-2 md:p-3 rounded-2xl flex flex-col items-center text-center shadow-2xs min-w-0">
+            <img
+              src={chairSquatDemo}
+              alt="1. 椅子坐站起立"
+              className="w-full aspect-square object-contain bg-orange-50/30 rounded-xl mb-2 border border-slate-50"
+              referrerPolicy="no-referrer"
+            />
+            <span className="text-sm md:text-base font-bold leading-snug text-slate-800">1. 椅子坐站起立</span>
+          </div>
+          <div className="bg-white border border-slate-100 p-2 md:p-3 rounded-2xl flex flex-col items-center text-center shadow-2xs min-w-0">
+            <img
+              src={wallPushUpDemo}
+              alt="2. 靠牆伏地挺身"
+              className="w-full aspect-square object-contain bg-orange-50/30 rounded-xl mb-2 border border-slate-50"
+              referrerPolicy="no-referrer"
+            />
+            <span className="text-sm md:text-base font-bold leading-snug text-slate-800">2. 靠牆伏地挺身</span>
+          </div>
+          <div className="bg-white border border-slate-100 p-2 md:p-3 rounded-2xl flex flex-col items-center text-center shadow-2xs min-w-0">
+            <img
+              src={calfRaiseDemo}
+              alt="3. 扶椅站姿提踵"
+              className="w-full aspect-square object-contain bg-orange-50/30 rounded-xl mb-2 border border-slate-50"
+              referrerPolicy="no-referrer"
+            />
+            <span className="text-sm md:text-base font-bold leading-snug text-slate-800">3. 扶椅站姿提踵</span>
+          </div>
+          <div className="bg-white border border-slate-100 p-2 md:p-3 rounded-2xl flex flex-col items-center text-center shadow-2xs min-w-0">
+            <img
+              src={legExtensionDemo}
+              alt="4. 坐姿直膝抬腿"
+              className="w-full aspect-square object-contain bg-orange-50/30 rounded-xl mb-2 border border-slate-50"
+              referrerPolicy="no-referrer"
+            />
+            <span className="text-sm md:text-base font-bold leading-snug text-slate-800">4. 坐姿直膝抬腿</span>
+          </div>
+        </div>
+        <p className="text-sm md:text-base text-slate-500 leading-relaxed">
+          💡 動作示範僅供參考。居家訓練請務必扶穩椅背、牆壁，以安全為第一原則。
+        </p>
+      </div>
+
+      {/* Exercise picker list with nested interactive controls */}
+      <div className="space-y-3.5" id="exercise-list">
           <span className="text-base font-bold text-slate-400 uppercase tracking-wider block mb-1">四套抗肌少運動清單 (展開後可直接進行計時與紀錄)</span>
           {RESISTANCE_EXERCISES.map((ex, idx) => {
             const isSelected = ex.id === selectedId;
@@ -369,55 +417,6 @@ export default function WorkoutTimer() {
             );
           })}
         </div>
-
-        {/* Right column: Action demo cards as visual references */}
-        <div className="lg:col-span-4" id="visual-demo-guide">
-          <div className="bg-slate-50/40 border border-slate-100 rounded-3xl p-5 space-y-4">
-            <span className="text-base font-bold text-slate-400 uppercase tracking-wider block">四大抗肌少動作示範圖</span>
-            <div className="grid grid-cols-2 lg:grid-cols-1 gap-3.5">
-              <div className="bg-white border border-slate-100 p-2.5 rounded-2xl flex flex-col items-center text-center shadow-2xs">
-                <img 
-                  src={chairSquatDemo} 
-                  alt="1. 椅子坐站起立" 
-                  className="w-full aspect-square object-cover rounded-xl mb-2 border border-slate-50"
-                  referrerPolicy="no-referrer"
-                />
-                <span className="text-base font-bold text-slate-800">1. 椅子坐站起立</span>
-              </div>
-              <div className="bg-white border border-slate-100 p-2.5 rounded-2xl flex flex-col items-center text-center shadow-2xs">
-                <img 
-                  src={wallPushUpDemo} 
-                  alt="2. 靠牆伏地挺身" 
-                  className="w-full aspect-square object-cover rounded-xl mb-2 border border-slate-50"
-                  referrerPolicy="no-referrer"
-                />
-                <span className="text-base font-bold text-slate-800">2. 靠牆伏地挺身</span>
-              </div>
-              <div className="bg-white border border-slate-100 p-2.5 rounded-2xl flex flex-col items-center text-center shadow-2xs">
-                <img 
-                  src={calfRaiseDemo} 
-                  alt="3. 扶椅站姿提踵" 
-                  className="w-full aspect-square object-cover rounded-xl mb-2 border border-slate-50"
-                  referrerPolicy="no-referrer"
-                />
-                <span className="text-base font-bold text-slate-800">3. 扶椅站姿提踵</span>
-              </div>
-              <div className="bg-white border border-slate-100 p-2.5 rounded-2xl flex flex-col items-center text-center shadow-2xs">
-                <img 
-                  src={legExtensionDemo} 
-                  alt="4. 坐姿直膝抬腿" 
-                  className="w-full aspect-square object-cover rounded-xl mb-2 border border-slate-50"
-                  referrerPolicy="no-referrer"
-                />
-                <span className="text-base font-bold text-slate-800">4. 坐姿直膝抬腿</span>
-              </div>
-            </div>
-            <p className="text-base text-slate-500 leading-normal">
-              💡 動作示範僅供參考。居家訓練請務必扶穩椅背、牆壁，以安全為第一原則。
-            </p>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
