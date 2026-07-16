@@ -24,7 +24,7 @@ export default function GiftPreview() {
             完整閱讀本網站後，分享你的閱讀心得或改善建議，即可免費取得《7天養肌打卡｜飲食・活動・生活習慣》Notion 模板。每天勾選做得到的項目，從7天累積紀錄看見自己已經建立的習慣，以及下一步可以調整的地方。
           </p>
           <p className="mt-3 text-sm font-bold leading-relaxed text-amber-900">
-            申請將透過 Google 表單收件，由製作團隊人工審核後寄送，並非即時寄送。
+            閱讀完成後填寫 SurveyCake 問卷，送出後即可在感謝頁取得 Notion 模板連結。
           </p>
           <p className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-bold text-slate-600">
             <span className="inline-flex items-center gap-1">
