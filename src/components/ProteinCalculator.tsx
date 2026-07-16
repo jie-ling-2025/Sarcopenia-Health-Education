@@ -122,9 +122,9 @@ export default function ProteinCalculator() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8" id="calculator-grid">
+      <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 xl:gap-8" id="calculator-grid">
         {/* Left column: Controls & calculation */}
-        <div className="lg:col-span-5 space-y-6">
+        <div className="xl:col-span-5 space-y-6">
           <div className="bg-slate-50/50 p-5 rounded-2xl border border-slate-100 space-y-5" id="calculator-controls">
             {/* Weight input */}
             <div>
@@ -230,10 +230,10 @@ export default function ProteinCalculator() {
         </div>
 
         {/* Right column: Interactive Meal Planner */}
-        <div className="lg:col-span-7 flex flex-col space-y-5">
+        <div className="xl:col-span-7 flex flex-col space-y-5">
           {/* Progress Bar of Meal Planner */}
           <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100" id="progress-container">
-            <div className="flex justify-between items-center text-base mb-2">
+            <div className="flex flex-col gap-1 text-base mb-3 sm:flex-row sm:items-center sm:justify-between">
               <span className="font-bold text-slate-700 flex items-center gap-1">
                 <Utensils className="w-3.5 h-3.5 text-emerald-600" /> 餐盤蛋白質累積進度
               </span>
@@ -251,7 +251,7 @@ export default function ProteinCalculator() {
               />
             </div>
 
-            <div className="flex justify-between items-center text-base text-slate-500 mt-1.5">
+            <div className="flex flex-col gap-1 text-base text-slate-500 mt-2 sm:flex-row sm:items-center sm:justify-between">
               <span>累積熱量：{plannedCaloriesTotal} 大卡 (kcal)</span>
               {progressPercentage >= 100 ? (
                 <span className="text-emerald-600 font-bold flex items-center gap-0.5">
@@ -266,10 +266,10 @@ export default function ProteinCalculator() {
           {/* Interactive Planner Layout */}
           <div className="flex-1 border border-slate-100 rounded-2xl overflow-hidden flex flex-col" id="food-selection-module">
             {/* Category tabs */}
-            <div className="bg-slate-50 p-2 border-b border-slate-100 flex gap-2">
+            <div className="bg-slate-50 p-2 border-b border-slate-100 grid grid-cols-1 gap-2 sm:grid-cols-3">
               <button
                 onClick={() => setActiveCategory('all')}
-                className={`px-3 py-1.5 text-base font-bold rounded-lg transition-colors ${
+                className={`min-h-12 w-full px-3 py-2.5 text-left text-base font-bold rounded-lg transition-colors sm:text-center ${
                   activeCategory === 'all' ? 'bg-white text-slate-800 shadow-xs' : 'text-slate-500 hover:text-slate-800'
                 }`}
               >
@@ -277,7 +277,7 @@ export default function ProteinCalculator() {
               </button>
               <button
                 onClick={() => setActiveCategory('animal')}
-                className={`px-3 py-1.5 text-base font-bold rounded-lg transition-colors ${
+                className={`min-h-12 w-full px-3 py-2.5 text-left text-base font-bold rounded-lg transition-colors sm:text-center ${
                   activeCategory === 'animal' ? 'bg-white text-slate-800 shadow-xs' : 'text-slate-500 hover:text-slate-800'
                 }`}
               >
@@ -285,7 +285,7 @@ export default function ProteinCalculator() {
               </button>
               <button
                 onClick={() => setActiveCategory('plant')}
-                className={`px-3 py-1.5 text-base font-bold rounded-lg transition-colors flex items-center gap-1 ${
+                className={`min-h-12 w-full px-3 py-2.5 text-left text-base font-bold rounded-lg transition-colors flex items-center gap-1 sm:justify-center sm:text-center ${
                   activeCategory === 'plant' ? 'bg-white text-slate-800 shadow-xs' : 'text-slate-500 hover:text-slate-800'
                 }`}
               >
@@ -294,19 +294,19 @@ export default function ProteinCalculator() {
             </div>
 
             {/* Food Grid list */}
-            <div className="p-4 overflow-y-auto max-h-76 grid grid-cols-1 sm:grid-cols-2 gap-2.5" id="foods-grid-list">
+            <div className="p-3 sm:p-4 grid grid-cols-1 md:grid-cols-2 gap-3" id="foods-grid-list">
               {filteredFoods.map((food) => {
                 const count = selectedFoods[food.id] || 0;
                 return (
                   <div 
                     key={food.id}
-                    className={`p-3 rounded-xl border flex items-center justify-between transition-colors ${
+                    className={`min-w-0 p-3 rounded-xl border flex items-start justify-between gap-3 transition-colors sm:items-center ${
                       count > 0 ? 'bg-emerald-50/20 border-emerald-200' : 'bg-white border-slate-150 hover:border-slate-250'
                     }`}
                   >
-                    <div className="flex items-center gap-2.5">
+                    <div className="flex min-w-0 items-center gap-2.5">
                       <span className="text-2xl" role="img" aria-label={food.name}>{food.icon}</span>
-                      <div>
+                      <div className="min-w-0">
                         <h4 className="text-base font-bold text-slate-800">{food.name}</h4>
                         <p className="text-base text-slate-500 mt-0.5">
                           一份 {food.servingSize} ‧ <span className="text-slate-600 font-semibold">{food.protein}g 蛋白質</span>
@@ -314,25 +314,25 @@ export default function ProteinCalculator() {
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
                       {count > 0 && (
                         <>
                           <button
                             onClick={() => handleRemoveFood(food.id)}
-                            className="w-6 h-6 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition-colors cursor-pointer"
+                            className="w-10 h-10 sm:w-9 sm:h-9 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition-colors cursor-pointer"
                             title="減少一份"
                           >
-                            <Minus className="w-3.5 h-3.5" />
+                            <Minus className="w-4 h-4" />
                           </button>
                           <span className="text-sm font-extrabold text-emerald-700 w-4 text-center">{count}</span>
                         </>
                       )}
                       <button
                         onClick={() => handleAddFood(food.id)}
-                        className="w-6 h-6 rounded-full bg-emerald-100 hover:bg-emerald-200 flex items-center justify-center text-emerald-700 transition-colors cursor-pointer"
+                        className="w-10 h-10 sm:w-9 sm:h-9 rounded-full bg-emerald-100 hover:bg-emerald-200 flex items-center justify-center text-emerald-700 transition-colors cursor-pointer"
                         title="增加一份"
                       >
-                        <Plus className="w-3.5 h-3.5" />
+                        <Plus className="w-4 h-4" />
                       </button>
                     </div>
                   </div>
@@ -342,8 +342,8 @@ export default function ProteinCalculator() {
 
             {/* Selected Summary Footer */}
             {Object.keys(selectedFoods).length > 0 && (
-              <div className="bg-slate-50 p-3 border-t border-slate-100 flex items-center justify-between gap-2 text-base" id="planner-cart-summary">
-                <div className="truncate text-slate-600">
+              <div className="bg-slate-50 p-3 border-t border-slate-100 flex flex-col items-start justify-between gap-3 text-base sm:flex-row sm:items-center" id="planner-cart-summary">
+                <div className="text-slate-600 leading-relaxed">
                   已選：
                   {Object.entries(selectedFoods).map(([foodId, count]) => {
                     const food = PROTEIN_FOODS.find(f => f.id === foodId);
@@ -352,7 +352,7 @@ export default function ProteinCalculator() {
                 </div>
                 <button
                   onClick={handleClearPlanner}
-                  className="text-base font-bold text-rose-600 hover:text-rose-800 flex-shrink-0 cursor-pointer"
+                  className="min-h-11 rounded-lg border border-rose-200 bg-white px-4 py-2 text-base font-bold text-rose-700 hover:bg-rose-50 hover:text-rose-900 flex-shrink-0 cursor-pointer"
                 >
                   清空餐盤
                 </button>
