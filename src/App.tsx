@@ -23,7 +23,7 @@ import { motion } from 'motion/react';
 
 export default function App() {
   return (
-    <div className="min-h-screen overflow-x-hidden bg-amber-50/30 font-sans antialiased" id="top">
+    <div className="min-h-screen overflow-x-clip bg-amber-50/30 font-sans antialiased" id="top">
       <SiteNav />
 
       <main className="px-4 py-8 sm:px-6 lg:px-8">
