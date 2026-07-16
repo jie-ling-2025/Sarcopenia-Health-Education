@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { 
   Sparkles, 
-  Heart, 
-  Image as ImageIcon, 
-  Award
+  Heart,
+  Award,
+  ZoomIn,
+  X
 } from 'lucide-react';
 
 // @ts-ignore
@@ -17,6 +18,39 @@ export default function InspirationalComic() {
 
   const title2 = '改變從此刻開始：坐姿夾腿運動';
   const desc2 = '坐姿夾腿運動：1. 挺直坐在椅子上，將彈力球或厚枕頭夾於雙膝之間。 2. 雙腳掌踩實地面，由大腿內側發力向內擠壓，感覺大腿內側肌群緊繃收縮。 3. 保持用力夾緊 3-5 秒，隨後緩慢放鬆。此動作能有效強化大腿內收肌群、提升骨盆與膝關節穩定度。';
+
+  const [preview, setPreview] = useState<{ src: string; alt: string; title: string } | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const previewTriggerRef = useRef<HTMLElement | null>(null);
+
+  const openPreview = (image: { src: string; alt: string; title: string }) => {
+    previewTriggerRef.current = document.activeElement as HTMLElement;
+    setPreview(image);
+  };
+
+  const closePreview = () => {
+    setPreview(null);
+  };
+
+  useEffect(() => {
+    if (!preview) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') closePreview();
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    window.requestAnimationFrame(() => closeButtonRef.current?.focus());
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+      previewTriggerRef.current?.focus();
+    };
+  }, [preview]);
 
   return (
     <div className="bg-gradient-to-b from-rose-50/50 via-white to-white rounded-3xl border-2 border-rose-100/90 p-6 md:p-8 shadow-sm" id="inspirational-comic-manga-theater">
@@ -57,20 +91,30 @@ export default function InspirationalComic() {
             </div>
           </div>
 
-          {/* Photo Frame (View Only) */}
-          <div className="relative rounded-xl border border-slate-200 bg-white aspect-video shadow-xs overflow-hidden flex flex-col items-center justify-center">
-            <img 
-              src={hexBarDeadliftComic} 
-              alt="故事一 ‧ 六角槓硬舉 勵志漫畫" 
-              className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-              referrerPolicy="no-referrer"
-            />
-            
-            {/* Info badge */}
-            <div className="absolute top-2 right-2 bg-slate-900/85 backdrop-blur-xs text-[10px] text-white font-extrabold px-2.5 py-1 rounded-full flex items-center gap-1 shadow-xs z-10">
-              <ImageIcon className="w-3 h-3 text-orange-400" />
-              <span>示範動作</span>
-            </div>
+          {/* Clickable photo preview */}
+          <div className="space-y-2">
+            <button
+              type="button"
+              onClick={() => openPreview({
+                src: hexBarDeadliftComic,
+                alt: '故事一 ‧ 六角槓硬舉 勵志漫畫',
+                title: title1
+              })}
+              className="group relative w-full rounded-xl border border-slate-200 bg-white aspect-video shadow-xs overflow-hidden cursor-zoom-in focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-orange-300"
+              aria-label="放大預覽故事一漫畫"
+              aria-haspopup="dialog"
+            >
+              <img
+                src={hexBarDeadliftComic}
+                alt="故事一 ‧ 六角槓硬舉 勵志漫畫"
+                className="absolute inset-0 w-full h-full object-contain transition-transform duration-300 group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:transform-none"
+                referrerPolicy="no-referrer"
+              />
+            </button>
+            <p className="flex items-center justify-center gap-1.5 text-sm font-semibold text-slate-500">
+              <ZoomIn className="w-4 h-4" aria-hidden="true" />
+              點擊圖片可放大閱讀
+            </p>
           </div>
         </div>
 
@@ -90,24 +134,71 @@ export default function InspirationalComic() {
             </div>
           </div>
 
-          {/* Photo Frame (View Only) */}
-          <div className="relative rounded-xl border border-slate-200 bg-white aspect-video shadow-xs overflow-hidden flex flex-col items-center justify-center">
-            <img 
-              src={defaultCourageComic} 
-              alt="改變從此刻開始 漫畫" 
-              className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-              referrerPolicy="no-referrer"
-            />
-            
-            {/* Info badge */}
-            <div className="absolute top-2 right-2 bg-slate-900/85 backdrop-blur-xs text-[10px] text-white font-extrabold px-2.5 py-1 rounded-full flex items-center gap-1 shadow-xs z-10">
-              <ImageIcon className="w-3 h-3 text-orange-400" />
-              <span>勵志漫畫</span>
-            </div>
+          {/* Clickable photo preview */}
+          <div className="space-y-2">
+            <button
+              type="button"
+              onClick={() => openPreview({
+                src: defaultCourageComic,
+                alt: '改變從此刻開始 漫畫',
+                title: title2
+              })}
+              className="group relative w-full rounded-xl border border-slate-200 bg-white aspect-video shadow-xs overflow-hidden cursor-zoom-in focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-orange-300"
+              aria-label="放大預覽故事二漫畫"
+              aria-haspopup="dialog"
+            >
+              <img
+                src={defaultCourageComic}
+                alt="改變從此刻開始 漫畫"
+                className="absolute inset-0 w-full h-full object-contain transition-transform duration-300 group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:transform-none"
+                referrerPolicy="no-referrer"
+              />
+            </button>
+            <p className="flex items-center justify-center gap-1.5 text-sm font-semibold text-slate-500">
+              <ZoomIn className="w-4 h-4" aria-hidden="true" />
+              點擊圖片可放大閱讀
+            </p>
           </div>
         </div>
 
       </div>
+
+      {preview && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/80 p-3 sm:p-6"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="comic-preview-title"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) closePreview();
+          }}
+        >
+          <div className="relative flex max-h-[94vh] w-full max-w-6xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl">
+            <div className="flex items-center justify-between gap-3 border-b border-slate-200 px-4 py-3">
+              <h3 id="comic-preview-title" className="text-base sm:text-lg font-black text-slate-900">
+                {preview.title}
+              </h3>
+              <button
+                ref={closeButtonRef}
+                type="button"
+                onClick={closePreview}
+                className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full bg-slate-100 text-slate-800 transition-colors hover:bg-slate-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-orange-300"
+                aria-label="關閉圖片預覽"
+              >
+                <X className="h-6 w-6" aria-hidden="true" />
+              </button>
+            </div>
+            <div className="flex min-h-0 flex-1 items-center justify-center overflow-auto bg-slate-100 p-2 sm:p-4">
+              <img
+                src={preview.src}
+                alt={preview.alt}
+                className="max-h-[82vh] w-auto max-w-full object-contain"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Under guidance section */}
       <div className="mt-8 bg-slate-50 rounded-2xl p-4.5 border border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
