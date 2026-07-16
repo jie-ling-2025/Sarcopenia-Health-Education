@@ -13,6 +13,33 @@ const links = [
 
 export default function SiteNav() {
   const [open, setOpen] = useState(false);
+  const [readingProgress, setReadingProgress] = useState(0);
+
+  useEffect(() => {
+    let animationFrame = 0;
+
+    const updateReadingProgress = () => {
+      window.cancelAnimationFrame(animationFrame);
+      animationFrame = window.requestAnimationFrame(() => {
+        const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = scrollableHeight > 0
+          ? Math.min(100, Math.max(0, (window.scrollY / scrollableHeight) * 100))
+          : 0;
+
+        setReadingProgress(progress);
+      });
+    };
+
+    updateReadingProgress();
+    window.addEventListener('scroll', updateReadingProgress, { passive: true });
+    window.addEventListener('resize', updateReadingProgress);
+
+    return () => {
+      window.cancelAnimationFrame(animationFrame);
+      window.removeEventListener('scroll', updateReadingProgress);
+      window.removeEventListener('resize', updateReadingProgress);
+    };
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -52,6 +79,22 @@ export default function SiteNav() {
         >
           <Menu aria-hidden="true" />
         </button>
+      </div>
+
+      <div
+        className="h-1.5 w-full overflow-hidden bg-amber-50"
+        role="progressbar"
+        aria-label="網站閱讀進度"
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={Math.round(readingProgress)}
+        aria-valuetext={`${Math.round(readingProgress)}%`}
+      >
+        <div
+          className="h-full origin-left bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 shadow-[0_0_8px_rgba(249,115,22,0.45)]"
+          style={{ transform: `scaleX(${readingProgress / 100})` }}
+          aria-hidden="true"
+        />
       </div>
 
       {open && (
